@@ -6,9 +6,6 @@ const api = import.meta.env.VITE_API;
 console.log(typeof api);
 
 const getQuery = () => {
-	console.log('api', api);
-	console.log('url', `${geoURL}Bern&limit=1&appid=${api}`);
-
 	return axios.get(baseURL).then((response) => response.data);
 };
 
