@@ -8,12 +8,7 @@ const Person = ({ name, number, handleDelete }) => {
 
 const Numbers = ({ array, handleDelete }) => {
 	return array.map((person) => (
-		<Person
-			key={person.name}
-			name={person.name}
-			number={person.number}
-			handleDelete={() => handleDelete(person.name)}
-		/>
+		<Person key={person.id} name={person.name} number={person.number} handleDelete={() => handleDelete(person.id)} />
 	));
 };
 

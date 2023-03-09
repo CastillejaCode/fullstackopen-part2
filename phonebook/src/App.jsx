@@ -45,15 +45,21 @@ const App = () => {
 
 	const addPerson = (e) => {
 		e.preventDefault();
-		const person = { name: newName.trim(), number: newNumber, id: newName.trim() };
-		if (persons.some((element) => element.name === newName)) {
+		const person = { name: newName.trim(), number: newNumber };
+		let id;
+		if (
+			persons.some((element) => {
+				id = element.id;
+				return element.name === newName;
+			})
+		) {
 			if (window.confirm(`${newName} is already in the phonebook, would you like to replace the number?`)) {
 				backendService
-					.update(person.id, person)
+					.update(id, person)
 					.then(() => {
 						setPersons(
 							persons.map((p) => {
-								if (p.id === person.id) return person;
+								if (p.id === id) return person;
 								else return p;
 							})
 						);
